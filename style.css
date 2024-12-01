@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #090e42, #1a1333, #001220);
+    color: #e1e1e1;
+    text-align: center;
+    cursor: url('img/1008418.cur'), auto;
+    animation: gradientBG 8s infinite alternate;
+}
+
+@keyframes gradientBG {
+    0% { background: linear-gradient(135deg, #090e42, #1a1333, #001220); }
+    50% { background: linear-gradient(135deg, #02030b, #0f1a44, #22132b); }
+    100% { background: linear-gradient(135deg, #090e42, #1a1333, #001220); }
+}
+
+.profile-container {
+    background: rgba(35, 39, 42, 0.9);
+    border: 2px solid #3f0fff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.profile-pic {
+    box-shadow: 0 0 0 10px #0071ff, 0 0 30px rgba(0, 113, 255, 0.5);
+}
+
+.profile-pic:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 12px #00ff94, 0 0 40px rgba(0, 255, 148, 0.7);
+}
+
+.tap-to-open {
+    font-size: 14px;
+    color: #01c5ff;
+    font-weight: bold;
+    margin-top: 8px;
+    text-shadow: 0 0 8px #01c5ff;
+}
+
+.social-section {
+    background: linear-gradient(135deg, #0071ff, #101112);
+    border: 2px solid #00ffc5;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.social-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 255, 197, 0.5);
+}
+
+.social-links a:hover {
+    transform: rotate(15deg) scale(1.2);
+    color: #00ff94;
+    box-shadow: 0 0 10px #00ff94;
+}
+
+.back-button {
+    background: linear-gradient(135deg, #00b0ff, #0051ff);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #00ff94, #00b0ff);
+    transform: scale(1.1);
+}

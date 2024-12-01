@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momen's Account</title>
+
+    <!-- إضافة مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* خلفية الموقع */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000; /* خلفية سوداء */
+            color: #e1e1e1;
+            text-align: center;
+            cursor: url('img/1008418.cur'), auto; /* تغيير المؤشر إلى الصورة الجديدة */
+        }
+
+        /* تنسيق الحاوية الرئيسية */
+        .profile-container {
+            background-color: rgba(44, 47, 51, 0.85); /* خلفية شفافة */
+            border-radius: 12px;
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        /* تنسيق الصورة الشخصية */
+        .profile-pic-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 0 8px #090082;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px #020202;
+        }
+
+        /* الرسالة تحت الصورة */
+        .tap-to-open {
+            font-size: 16px;
+            color: #0062ff;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* تنسيق النص */
+        .name {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        .info, .initial-scale {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        /* قسم وسائل التواصل */
+        .social-section {
+            background: linear-gradient(135deg, #1f136a, #196deb);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 23px; /* تعديل المسافة السفلى لقسم الحسابات */
+        }
+
+        .social-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        /* تنسيق الروابط */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #000000; /* اللون الأبيض للأيقونات */
+            font-size: 33px; /* تكبير حجم الأيقونات */
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            color: #f1f1f1; /* تأثير عند التمرير */
+        }
+
+        .social-links i {
+            font-size: 35px; /* تكبير الأيقونات */
+        }
+
+        /* نافذة الصورة */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* زر العودة */
+        .back-button {
+            background-color: #5338ff;
+            color: #fffafa;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0c0b0b;
+        }
+
+        /* تنسيقات لشاشات أصغر */
+        @media (max-width: 768px) {
+            .tap-to-open {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-title">Simple Personal Profile</div>
+
+    <div class="profile-container">
+        <div class="profile-pic-container">
+            <div class="profile-pic" id="profilePic">
+                <img src="img/IMG-20240903-WA0016.jpg" alt="My Profile Picture">
+            </div>
+            <div class="tap-to-open"> tap to open photo </div>
+        </div>
+        <h2 class="name"> 𝑴𝑶𝑴𝑬𝑵 𝑯𝑨𝑺𝑺𝑨𝑵 𝑴𝑶𝑯𝑨𝑴𝑬𝑫 <h2>
+        <h3 class="info">Computer Engineering Student</h3>
+
+        <div class="social-section">
+            <div class="social-title">Contact with me</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100016023308962&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=201060782406&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/momen.h.salman?igsh=MXh4aG4zbXlvMnVscA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@eng_momen1?_t=8pQ3rgImPR4&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <!-- زر العودة تحت الحسابات الشخصية -->
+        <a href="https://momen-vcard.netlify.app/" class="back-button" target="_blank"> click for my vcard</a> <!-- رابط الزر مع الرابط المطلوب -->
+    </div>
+
+    <div class="overlay" id="overlay">
+        <img id="overlayImage" src="" alt="Enlarged Image">
+    </div>
+
+    <script>
+        const profilePic = document.getElementById('profilePic');
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlayImage');
+
+        profilePic.addEventListener('click', function() {
+            overlay.style.display = 'flex';
+            overlayImage.src = profilePic.querySelector('img').src;
+        });
+
+        overlay.addEventListener('click', function() {
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
